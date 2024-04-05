@@ -1,0 +1,17 @@
+{
+    "recommendations": [
+        "yuichinukiyama.vscode-preview-server",
+        "pkief.material-icon-theme",
+        "mhutchie.git-graph",
+        "oderwat.indent-rainbow",
+        "formulahendry.auto-rename-tag",
+        "rafamel.subtle-brackets",
+        "github.vscode-pull-request-github",
+        "ecmel.vscode-html-css",
+        "dbaeumer.vscode-eslint",
+        "visualstudioexptteam.vscodeintellicode",
+        "xabikos.javascriptsnippets",
+        "ritwickdey.liveserver",
+        "omthemes.omthemes"
+    ]
+}
