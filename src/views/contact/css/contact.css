@@ -1,4 +1,43 @@
+/* Header section */
+header{
+    background-color:#D1B681; 
+    display: flex; 
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#headerList{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
 .header-menu{
     display: block;
 }
 
+/* Icon */
+#mahaloIcon{
+    width: 120px;
+}
+
+/* End Header section */
+
+
+/* Footer section */
+footer{
+    background-color:#D1B681;
+}
+
+
+/* End Footer section */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+main {
+    flex: 1;    /* same as flex-grow: 1; */
+}
