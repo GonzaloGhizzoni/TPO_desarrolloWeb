@@ -5,25 +5,19 @@
     --third-color: #dfd0cb;
 
 } */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 
-/* header{
-    background-color: var(--bg-color);
-} */
-
-/* body{
-    background-color: var(--secondary-color);
-} */
-
-/* footer{
-    background-color: var(--bg-color);
-} */
+}
 
 #banner-aboutUs {
 
-    background-image: url('../../../assets/images/backgroundImage.jpg');
-    height: 600px;
+    background-image: url('../../../assets/images/recepcionMahaloHorizontal.jpeg');
+    height: 400px;
     background-size: cover;
-    background-position: center;
+    background-position: top;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
     
     display: flex;
@@ -33,3 +27,4 @@
     color: bisque; /* MODIFICAR COLOR CUANDO ESTE LA PALETA */
     font-size: 170%;
 }
+
