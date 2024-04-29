@@ -38,7 +38,7 @@ header{
     align-content: stretch;
     justify-content: space-evenly;
     align-items: center;
-    color: bisque; /* MODIFICAR COLOR CUANDO ESTE LA PALETA */
+    color: #D1B681; /* MODIFICAR COLOR CUANDO ESTE LA PALETA */
     font-size: 170%;
 }
 
