@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../contact/css/contact.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Mahalo</title>
 </head>
 <body>
@@ -22,24 +23,27 @@
                 <p>Desde Mahalo te invitamos a conocer nuestra propuesta</p>
             </div>
             <form action="">
-                <div style="display: flex; flex-direction: column;">
+                <div class="form-group" style="display: flex; flex-direction: column;">
                     <label for="fName">Nombre</label>
-                    <input type="text" name= "fName" id="name">
+                    <input type="text" class="form-control" name= "fName" id="name" placeholder="Ingrese su nombre">
             
                     <label for="fTelephone">Telefono</label>
-                    <input type="number" name="fTelephone" id="telephone">
+                    <input type="number" class="form-control" name="fTelephone" id="telephone" placeholder="Ingrese su telefono">
             
                     <label for="fEmal">Email</label>
-                    <input type="email" name="fEmal" id="email">
+                    <input type="email" class="form-control" name="fEmal" id="email" placeholder="Ingrese su email">
             
                     <label for="fMessage">Mensaje</label>
-                    <input type="text" name="fMessage" id="message">
+                    <input type="text" class="form-control" name="fMessage" id="message" placeholder="Deje su mensaje">
                 </div>
 
                 <div style="display: flex; justify-content: flex-end;">
-                    <input type="submit" value="Submit">
+                    <input type="submit" class="btn btn-primary" value="Submit">
                 </div>
             </form>
+
+            <iframe width="100%" height="400" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCQzO1dQqFIMG-TR6c5adXQKXROIFzC6vs&q=Andalgala1301,buenos+aires">
+</iframe>
     </main>
     <footer>
         <div>
