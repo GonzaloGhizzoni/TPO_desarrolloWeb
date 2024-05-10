@@ -1,10 +1,19 @@
 /* Header section */
-header{
-    background-color:#D1B681; 
-    display: flex; 
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
+
+/* fonts */
+:root{
+    --bg-color: #ffd2cc;
+    --accent-color: #CCF9FF;
+}
+*{
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: #332b2a;
+}
+
+.navbar {
+    background-color:var(--bg-color); 
 }
 
 #headerList{
@@ -27,17 +36,36 @@ header{
 
 /* Footer section */
 footer{
-    background-color:#D1B681;
+    background-color:var(--bg-color);
 }
 
 
 /* End Footer section */
+
+/* main content */
 
 body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
+
 main {
     flex: 1;    /* same as flex-grow: 1; */
 }
+
+
+
+/* Form contact content */
+
+.btn-primary {
+    background-color: var(--accent-color) !important;
+    color: #000000 !important;
+    border-color: var(--bg-color) !important;
+}
+
+
+
+/* End form contact content */
+
+/* End main content */
