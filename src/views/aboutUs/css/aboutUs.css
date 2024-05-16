@@ -41,6 +41,11 @@ header {
   z-index: 9999999;
 }
 
+.navbar {
+  background-color:var(--bg-color); 
+}
+
+
 #headerList {
   display: flex;
   width: 40%;
@@ -59,6 +64,18 @@ header {
 /* End Header section */
 
 /* Start of body section */
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;    /* same as flex-grow: 1; */
+}
+
+
 
 #banner-aboutUs {
   background-image: url("../../../assets/images/recepcionMahaloHorizontal.jpeg");
