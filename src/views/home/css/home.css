@@ -151,3 +151,63 @@ p {
     margin-left: 80px;
     color: rgb(123, 47, 255);
 }
+
+
+
+/* Header section */
+
+/* fonts */
+:root{
+    --bg-color: #ffd2cc;
+    --accent-color: #CCF9FF;
+}
+*{
+        font-family: "Roboto", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+
+}
+
+.navbar {
+    background-color:var(--bg-color); 
+}
+
+#headerList{
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+}
+
+.header-menu{
+    display: block;
+}
+
+/* Icon */
+#mahaloIcon{
+    width: 120px;
+}
+
+/* End Header section */
+
+
+/* Footer section */
+footer{
+    background-color:var(--bg-color);
+}
+
+
+/* End Footer section */
+
+/* main content */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;    /* same as flex-grow: 1; */
+}
+
+/* End main content */
