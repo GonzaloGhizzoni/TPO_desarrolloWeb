@@ -1,19 +1,21 @@
 import { loadHeader } from "../../../common/header/header.js"
 import { loadFooter } from "../../../common/footer/footer.js"
 
+// Header and footer loading function
+// -------------------------------------------------------- //
 // Use case
 var actualView = '../contact/contact.html'; // Replace with the path of the actual view.
 loadHeader(actualView);
 loadFooter();
 
-// --------------------------------------------------------
+// -------------------------------------------------------- //
 
+// Validate when the DOM is fully loaded and when the form is submited.
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector('form');
     const inputs = document.querySelectorAll('input');
 
-    console.log(inputs);
-    // Add blur event listener to all required inputs
+    //Add blur event listener to all required inputs
     // inputs.forEach(input => {
     //     input.addEventListener('blur', () => {
     //         validateField(input);
@@ -35,17 +37,20 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
+
+// Function for validate the value of form field based on it's type in contact view.
+// Param:field -> This is a reference to the HTML form element (e.g., input, select, textarea) that needs validation.
+// Return Value: The function returns true if the field is valid and false if there's an error.
 function validateField(field) {
     const fieldType = field.getAttribute('type');
     const fieldValue = field.value.trim();
     const selectValue = document.querySelector('select');
-    const pepe = "Seleccione una opcion"
-    console.log(selectValue);
+    const selectDefaultOption = "Seleccione una opcion"
 
-    if (fieldType === 'text' || fieldType === 'email' || fieldType === 'number' || field.tagName.toLowerCase() === 'textarea') {
+    if (fieldType === 'text' || fieldType === 'email' || fieldType === 'number') {
         if (fieldValue.length === 0) {
             field.classList.add('is-invalid');
-            field.nextElementSibling.textContent = 'This field is required.';
+            field.nextElementSibling.textContent = 'Debe completar este campo.';
             return false;
         } else {
             field.classList.remove('is-invalid');
@@ -57,7 +62,7 @@ function validateField(field) {
     if (fieldType === 'checkbox') {
         if (!field.checked) {
             field.classList.add('is-invalid');
-            field.nextElementSibling.textContent = 'You must agree before submitting.';
+            field.nextElementSibling.textContent = 'Debe aceptar los términos y condiciones antes de continuar.';
             return false;
         } else {
             field.classList.remove('is-invalid');
@@ -66,14 +71,14 @@ function validateField(field) {
         }
     }
 
-    if (selectValue.value === pepe) {
-        selectValue.nextElementSibling.textContent = 'You must select an option.';
+    if (selectValue.value === selectDefaultOption) {
+        selectValue.classList.add('is-invalid');
+        selectValue.nextElementSibling.textContent = 'Debe seleccionar una opción.';
         return false;
     } else {
+        selectValue.classList.remove('is-invalid');
         selectValue.nextElementSibling.textContent = '';
         return true;
     }
-
-    return true;
-    
 }
+// -------------------------------------------------------- //
