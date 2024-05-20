@@ -77,12 +77,11 @@ main {
 
 
 .white-space{
-    height: 20px;
+    height:100px;
 }
 
 
 /* Form contact content */
-
 form{
     width: 50%;
 }
@@ -93,8 +92,9 @@ form{
     border-color: var(--bg-color) !important;
 }
 
-
-
+.form-element{
+    padding-bottom: 3%;
+}
 /* End form contact content */
 
 /* End main content */
