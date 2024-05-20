@@ -12,3 +12,21 @@ footer {
     align-items: baseline;
   }
   
+.social-network{
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+  justify-content: center;
+  img{
+    max-width: 30px;
+    max-height: 30px;
+    margin: 5px;
+  }
+  
+}
+
+.information-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
