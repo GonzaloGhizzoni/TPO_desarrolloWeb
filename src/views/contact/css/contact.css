@@ -35,10 +35,20 @@
 
 
 /* Footer section */
-footer{
-    background-color:var(--bg-color);
-}
-
+footer {
+    background-color: var(--bg-color);
+  }
+  
+  footer img {
+    width: 80px;
+  }
+  
+  .copyright-footer{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+  }
+  
 
 /* End Footer section */
 
