@@ -75,15 +75,18 @@ main {
     }
 }
 
-
 .white-space{
     height:100px;
 }
 
+#mapsContainer{
+    display: flex; 
+    height: 100%;
+}
 
 /* Form contact content */
 form{
-    width: 50%;
+    width: 40%;
 }
 
 .btn-primary {
@@ -94,6 +97,32 @@ form{
 
 .form-element{
     padding-bottom: 3%;
+}
+
+#contactFormContainer{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#contactForm{
+    display: flex; 
+    flex-direction: column;
+}
+
+#conditionsCheckContainer{
+    display: flex;
+    flex-direction: column;
+}
+
+#submitButtonContainer{
+    display: flex; 
+    justify-content: flex-end;
+}
+
+#contactFormImage{
+    width: 40%; 
+    height: 700px;
 }
 /* End form contact content */
 
