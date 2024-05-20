@@ -1,0 +1,19 @@
+.navbar {
+    background-color:var(--bg-color); 
+  }
+  
+  
+  #headerList {
+    display: flex;
+    width: 40%;
+    justify-content: space-between;
+  }
+  
+  .header-menu {
+    display: block;
+  }
+  
+  /* Icon */
+  #mahaloIcon {
+    width: 120px;
+  }
