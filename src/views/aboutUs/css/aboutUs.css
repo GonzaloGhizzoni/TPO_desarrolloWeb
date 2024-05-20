@@ -24,13 +24,7 @@
   font-style: normal;
 }
 
-
-
-
-
 /* Start of header section */
-
-
 
 /* End Header section */
 
@@ -43,10 +37,8 @@ body {
 }
 
 main {
-  flex: 1;    /* same as flex-grow: 1; */
+  flex: 1; /* same as flex-grow: 1; */
 }
-
-
 
 #banner-aboutUs {
   background-image: url("../../../assets/images/recepcionMahaloHorizontal.jpeg");
@@ -59,7 +51,7 @@ main {
   align-content: stretch;
   justify-content: space-evenly;
   align-items: center;
-  color: var(--bg-color); 
+  color: var(--bg-color);
   font-size: 170%;
   text-align: center;
 }
@@ -73,25 +65,49 @@ main {
 }
 
 .service-list {
-    display: flex;
+  display: flex;
+}
+
+.main-img {
+  width: 15%;
+  height: 20%;
+  border-radius: 20px;
+  padding: 10px;
+}
+
+@media (max-width: 767px) {
+  .main-img {
+    width: 0%;
   }
+}
 
+@media (min-width: 768px) and (max-width: 1024px){
+  .main-img {
+    width: 25%;
+    height: 30%;
+    border-radius: 20px;
+    padding: 10px;
+  }
+}
 
-@media (max-width: 767px) { /*punto de corte para acomodar la lista el mobile view*/
+@media (max-width: 767px) {
+  /*punto de corte para acomodar la lista el mobile view*/
   .service-list {
     display: flex;
     flex-direction: column;
-    p{
-        padding-bottom: 5px;
+    p {
+      padding-bottom: 5px;
     }
   }
 }
+
 #gallery-title {
   display: flex;
   justify-content: center;
   color: var(--bg-color);
 }
-@media (min-width: 1024px) { /*punto de corte para el contenedor del gallery*/
+@media (min-width: 1024px) {
+  /*punto de corte para el contenedor del gallery*/
   .gallery-container {
     max-width: 900px;
     max-height: 900px;
@@ -123,7 +139,8 @@ main {
   height: 80%;
 }
 
-@media (min-width: 300px) { /*punto de corte para la foto wide*/
+@media (min-width: 300px) {
+  /*punto de corte para la foto wide*/
   .wide {
     grid-column: span 3;
     width: 100%;
@@ -132,8 +149,7 @@ main {
   }
 }
 
-
-.gallery-photo:hover { 
+.gallery-photo:hover {
   filter: opacity(0.9);
   transform: scale(1.2);
 }
@@ -141,6 +157,5 @@ main {
 /* End of body section */
 
 /* Footer section */
-
 
 /* End Footer section */
