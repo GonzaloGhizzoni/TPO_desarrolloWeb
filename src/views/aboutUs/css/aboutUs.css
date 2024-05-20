@@ -30,36 +30,7 @@
 
 /* Start of header section */
 
-/* header {
-  background-color: var(--bg-color);
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 9999999;
-} */
 
-.navbar {
-  background-color:var(--bg-color); 
-}
-
-
-#headerList {
-  display: flex;
-  width: 40%;
-  justify-content: space-between;
-}
-
-.header-menu {
-  display: block;
-}
-
-/* Icon */
-#mahaloIcon {
-  width: 120px;
-}
 
 /* End Header section */
 
@@ -170,19 +141,6 @@ main {
 /* End of body section */
 
 /* Footer section */
-footer {
-  background-color: var(--bg-color);
-}
-
-footer img {
-  width: 80px;
-}
-
-.copyright-footer{
-  display: flex;
-  justify-content: center;
-  align-items: baseline;
-}
 
 
 /* End Footer section */
