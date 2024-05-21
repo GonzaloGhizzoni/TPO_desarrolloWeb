@@ -63,6 +63,7 @@ h1 {
     width: 100%;
     padding: 40px;
     text-decoration: underline;
+    color: #4b2d42;
 }
 
 .div_1 {
@@ -145,7 +146,7 @@ p {
     margin-top: 20px;
     font-size: 6vh;
     background-color: #ffd2cc;
-    color: rgb(0, 0, 0);
+    color: #4b2d42;
 }
 
 .elegirnos{
