@@ -1,16 +1,22 @@
-/* fonts */
+/*#region fonts and general content*/
 :root{
     --bg-color: #ffd2cc;
     --accent-color: #CCF9FF;
+    --font-color:  #411020;
 }
 *{
         font-family: "Roboto", sans-serif;
         font-weight: 400;
         font-style: normal;
-
 }
 
-/* main content */
+h2,h3,h4,h5,h6,p{
+  color: var(--font-color);
+}
+
+/* #endregion fonts and general content */
+
+/*#region main content */
 
 body {
     display: flex;
@@ -35,7 +41,7 @@ main {
     align-content: stretch;
     justify-content: center;
     align-items: center;
-    color: var(--bg-color); /* MODIFICAR COLOR CUANDO ESTE LA PALETA */
+    color: var(--bg-color)!important; /* MODIFICAR COLOR CUANDO ESTE LA PALETA */
     font-size: 170%;
     text-align: center;
     h1{
@@ -47,90 +53,28 @@ main {
     height:100px;
 }
 
+#tinyWhiteSpace{
+  height:50px;
+}
+
 #cardsContainer{
     display: flex;
     justify-content: space-evenly;
-    height: 500px;
 }
 
+.info-text{
+  text-align: center;
+}
+/*#endregion main content */
 
-/* Cards */
-
-/* First Card */
-
-.card {
-    position: relative;
-    width: 300px;
-    height: 200px;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    perspective: 1000px;
-    box-shadow: 0 0 0 5px #ffffff80;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .card svg {
-    width: 48px;
-    fill: #333;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-  }
-  
-  .card__content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    background-color: #f2f2f2;
-    transform: rotateX(-90deg);
-    transform-origin: bottom;
-    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  }
-  
-  .card:hover .card__content {
-    transform: rotateX(0deg);
-  }
-  
-  .card__title {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-    font-weight: 700;
-  }
-  
-  .card:hover svg {
-    scale: 0;
-  }
-  
-  .card__description {
-    margin: 10px 0 0;
-    font-size: 14px;
-    color: #777;
-    line-height: 1.4;
-  }
-  
-
-/* First Card */
-
-
-/* Second Card */
+/*#region Cards */
 
 .card {
-    width: 300px;
-    height: 200px;
-    background-color: #4158D0;
-    background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+    width: 20%;
+    height: 65vh;
+    background-color: var(--accent-color);
+    background-image: none;
+    background-size: cover;     
     border-radius: 8px;
     color: white;
     overflow: hidden;
@@ -156,7 +100,7 @@ main {
   }
   
   .card-content .card-title {
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 700;
     color: inherit;
     text-transform: uppercase;
@@ -164,8 +108,8 @@ main {
   
   .card-content .card-para {
     color: inherit;
-    opacity: 0.8;
-    font-size: 14px;
+    font-size: 15px;
+    font-weight: bold;
   }
   
   .card:hover {
@@ -205,60 +149,4 @@ main {
     transform: translateX(100%);
   }
 
-/* Second Card */
-
-/* Third Card */
-
-.card {
-    width: 300px;
-    height: 200px;
-    perspective: 1000px;
-  }
-  
-  .card-inner {
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.999s;
-  }
-  
-  .card:hover .card-inner {
-    transform: rotateY(180deg);
-  }
-  
-  .card-front,
-  .card-back {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-  
-  .card-front {
-    background-color: #6A2C70;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    border: 10px solid #6A2C70;
-    border-radius: 10px;
-    justify-content: center;
-    font-size: 24px;
-    transform: rotateY(0deg);
-  }
-  
-  .card-back {
-    background-color: #F08A5D;
-    color: #fff;
-    display: flex;
-    align-items: center;
-    border: 10px solid #F08A5D;
-    border-radius: 10px;
-    justify-content: center;
-    font-size: 24px;
-    transform: rotateY(180deg);
-  }
-
-  /* Third Card */
-
-/* main content */
+/*#endregion Cards */
