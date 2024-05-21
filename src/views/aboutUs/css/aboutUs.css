@@ -56,6 +56,11 @@ main {
   text-align: center;
 }
 
+.content-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 #main-article {
   display: flex;
   flex-direction: column;
@@ -81,7 +86,7 @@ main {
   }
 }
 
-@media (min-width: 768px) and (max-width: 1024px){
+@media (min-width: 768px) and (max-width: 1024px) {
   .main-img {
     width: 25%;
     height: 30%;
@@ -99,6 +104,12 @@ main {
       padding-bottom: 5px;
     }
   }
+}
+
+.gallery-header-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #gallery-title {
