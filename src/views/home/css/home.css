@@ -62,7 +62,15 @@ h1 {
 
 .quieneSomos {
     padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.about-info{
+    width: 60%; 
+    margin-bottom: 2%;
 }
 
 .section-mahalo {
@@ -136,11 +144,6 @@ h2 {
     text-align: center;
 }
 
-p {
-    align-items: center;
-    text-align: center;
-    width: 100%;
-}
 
 .container-elegirnos {
     width: 100%;
@@ -192,6 +195,9 @@ p {
     text-align: start;
     margin-left: 80px;
     color: rgb(123, 47, 255);
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
 
@@ -204,17 +210,21 @@ p {
 :root {
     --bg-color: #ffd2cc;
     --accent-color: #CCF9FF;
+    --font-color:  #411020;
 }
 
 * {
     font-family: "Roboto", sans-serif;
     font-weight: 400;
     font-style: normal;
-
 }
 
 .navbar {
     background-color: var(--bg-color);
+}
+
+h3,h4,h5,h6,p{
+    color: var(--font-color) !important;
 }
 
 #headerList {
