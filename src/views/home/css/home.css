@@ -31,7 +31,7 @@ h1 {
     justify-content: center;
 }
 
-.sobre-mahalo {
+.about-mahalo {
     background-image: url(../recepcionMahaloHorizontal.jpeg);
     background-size: cover;
     background-position: center;
@@ -42,7 +42,7 @@ h1 {
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
 }
 
-.quieneSomos {
+.presentation-mahalo {
     padding: 50px;
 
 }
@@ -52,19 +52,19 @@ h1 {
     padding-top: 30px;
 }
 
-.servicios-mahalo {
+.services-mahalo {
     text-align: center;
     width: 100%;
     padding: 40px;
     color: #4b2d42;
 }
-.container-servicios {
+.container-services {
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
 
-.div_1 {
+.div-cards {
     width: 400px;
     height: 450px;
     background-color: rgb(255, 255, 255);
@@ -75,11 +75,11 @@ h1 {
 
 }
 
-.div_1 h2 {
+.div-cards h2 {
     color: rgb(177, 79, 123);
 }
 
-.div_1 img {
+.div-cards img {
     object-fit: cover;
     position: absolute;
     width: 100%;
@@ -92,18 +92,15 @@ h1 {
     font-size: 4vh;
 }
 
-
-
+.div-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-around;
+}
 
 .refButton {
     color: white;
     border-radius: 10px;
-}
-
-.divs-buttons {
-    margin-top: 30px;
-    display: flex;
-    justify-content: space-around;
 }
 
 .buttons {
@@ -124,7 +121,21 @@ p {
     width: 100%;
 }
 
-.container-elegirnos {
+.choose-us {
+    background-color: rgb(255, 255, 255);
+    padding-top: 50px;
+}
+
+.title-choose {
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 6vh;
+    background-color: #ffd2cc;
+    color: #4b2d42;
+}
+
+.container-choose {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -132,7 +143,7 @@ p {
     padding-bottom: 20px;
 }
 
-.elegirnos_1 {
+.reason-choose {
     text-align: center;
     width: 40%;
     margin-top: 40px;
@@ -145,21 +156,7 @@ p {
 
 }
 
-.titulo-elegirnos {
-    width: 100%;
-    padding: 20px;
-    margin-top: 20px;
-    font-size: 6vh;
-    background-color: #ffd2cc;
-    color: #4b2d42;
-}
-
-.elegirnos {
-    background-color: rgb(255, 255, 255);
-    padding-top: 50px;
-}
-
-.subt-elegirnos {
+.subt-choose {
     display: flex;
     justify-content: start;
     text-align: start;
@@ -170,14 +167,11 @@ p {
 
 }
 
-.text-elegirnos {
+.text-choose {
     text-align: start;
     margin-left: 80px;
     color: rgb(123, 47, 255);
 }
-
-
-
 
 
 /* Header section */
@@ -242,7 +236,7 @@ main {
 
 
 @media only screen and (max-width: 600px) {
-    .container-servicios {
+    .container-services {
         display: flex;
         flex-direction: column;
     }
@@ -286,7 +280,7 @@ main {
         width: 400px;
     }
 
-    .container-servicios {
+    .container-services {
         display: flex;
         flex-wrap: wrap;
         justify-content: center
@@ -309,7 +303,7 @@ main {
         width: 400px;
     }
 
-    .container-servicios {
+    .container-services {
         display: flex;
         flex-wrap: wrap;
         justify-content: center
