@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../contact/css/contact.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./../../common/footer/footer.css">
+    <link rel="stylesheet" href="../../common/header/header.css">
     <title>Mahalo</title>
 </head>
 <script type="module" src="../contact/js/contact.js"></script>
@@ -12,45 +14,74 @@
     <header class="sticky-top"></header>
 
     <main>
-            <div style="display: flex; align-items: center; justify-content: center; flex-direction: column; height: 25vh; background-image: url(../../assets/ManoSosteniendoCelular.jpeg); background-repeat: no-repeat;background-size: cover;">
-                <h2>Contactanos</h2>
-                <p>Desde Mahalo te invitamos a conocer nuestra propuesta</p>
+            <div id="banner-aboutUs">
+                <h1>Contactanos</h1>
+                <h3>Desde Mahalo te invitamos a conocer nuestra propuesta</h3>
             </div>
             <div class="white-space"></div>
-            <div style="display: flex;">
-                
-                <form action="">
-                    <div class="form-group" style="display: flex; flex-direction: column;">
-                        <label for="fName">Nombre</label>
-                        <input type="text" class="form-control" name= "fName" id="name" placeholder="Ingrese su nombre">
-                
-                        <label for="fTelephone">Telefono</label>
-                        <input type="number" class="form-control" name="fTelephone" id="telephone" placeholder="Ingrese su telefono">
-                
-                        <label for="fEmal">Email</label>
-                        <input type="email" class="form-control" name="fEmal" id="email" placeholder="Ingrese su email">
+            <div id="contactFormContainer">
+                <form action="" name="formContact">
+                    <div id="contactForm" class="form-group">
+                        <div class="form-element">
+                            <label for="fName">Nombre</label>
+                            <input type="text" class="form-control" name= "fName" id="name" placeholder="Ingrese su nombre">
+                            <div class="invalid-feedback"></div>
+                        </div>
 
-                        <label for="fEmal">Especialidad</label>
-                        <input type="" class="form-control" name="fEmal" id="email" placeholder="Ingrese su email">
-                
-                        <label for="fMessage">Mensaje</label>
-                        <input type="text" class="form-control" name="fMessage" id="message" placeholder="Deje su mensaje">
+                        <div class="form-element">
+                            <label for="fTelephone">Teléfono</label>
+                            <input type="number" class="form-control" name="fTelephone" id="telephone" placeholder="Ingrese su telefono">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-element">
+                            <label for="fEmal">Email</label>
+                            <input type="text" class="form-control" name="fEmal" id="email" placeholder="Ingrese su email">
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-element">
+                            <label for="specialitiesFormControlSelect">Especialidad</label>
+                            <select class="form-control" id="specialitiesFormControlSelect">
+                                <option>Seleccione una opción</option>
+                                <option>Uñas</option>
+                                <option>Pestañas</option>
+                                <option>Cejas</option>
+                                <option>Peinados</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        
+                        <div class="form-element">
+                            <label for="fMessage">Mensaje</label>
+                            <textarea class="form-control" id="message" rows="3" placeholder="Deje su mensaje"></textarea>                            
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="form-element">
+                            <label for="fImage">Imagen</label>
+                            <input type="file" class="form-control" name="fImage" id="image" accept="image/*">
+                            <div class="invalid-feedback"></div>
+                        </div>
                     </div>
-    
-                    <label for="fEmal">Acepto los terminos y condiciones</label>
-                    <input type="checkbox" class="form-control" name="fEmal" id="email" placeholder="Ingrese su email">
+                    
+                    <div id="conditionsCheckContainer" class="form-check">
+                        <label class="form-check-label" for="conditionsCheck">Acepto los términos y condiciones</label>                                            
+                        <input type="checkbox" class="form-check-input" name="fEmal" id="conditionsCheck">
+                        <div class="invalid-feedback"></div>
+                    </div>
 
-                    <div style="display: flex; justify-content: flex-end;">
+                    <div id="submitButtonContainer">
                         <input type="submit" class="btn btn-primary" value="Submit">
                     </div>
                 </form>
-                <img style="width: 50%;" src="../../assets/images/fotoPerfilInstragram.jpg" alt="">
+                <img id="contactFormImage" src="../../assets/images/entradaMahalo.jpg" alt="">
             </div> 
-
-            <iframe width="100%" height="400" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCQzO1dQqFIMG-TR6c5adXQKXROIFzC6vs&q=Andalgala1301,buenos+aires"></iframe>
+            <div class="white-space"></div>
+            <div id="mapsContainer">
+                <iframe width="100%" height="400" style="border:0" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCQzO1dQqFIMG-TR6c5adXQKXROIFzC6vs&q=Andalgala1301,buenos+aires"></iframe>
+            </div>
     </main>
-    <div class="white-space"></div>
-
     <footer></footer>
 </body>
 </html> 
