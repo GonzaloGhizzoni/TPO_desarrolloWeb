@@ -45,7 +45,7 @@ function validateField(field) {
     const fieldType = field.getAttribute('type');
     const fieldValue = field.value.trim();
     const selectValue = document.querySelector('select');
-    const selectDefaultOption = "Seleccione una opcion"
+    const selectDefaultOption = "Seleccione una opción"
 
     if (fieldType === 'text' || fieldType === 'email' || fieldType === 'number') {
         if (fieldValue.length === 0) {

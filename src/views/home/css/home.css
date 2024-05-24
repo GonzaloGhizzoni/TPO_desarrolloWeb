@@ -1,3 +1,24 @@
+/*#region fonts and general content*/
+:root {
+    --bg-color: #ffd2cc;
+    --accent-color: #CCF9FF;
+    --font-color:  #411020;
+}
+
+* {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.navbar {
+    background-color: var(--bg-color);
+}
+
+h3,h4,h5,h6,p{
+    color: var(--font-color) !important;
+}
+
 * {
     margin: 0%;
 }
@@ -20,7 +41,6 @@
     font-style: normal;
 }
 
-
 h1 {
     width: 100%;
     font-size: 7vh;
@@ -31,20 +51,50 @@ h1 {
     justify-content: center;
 }
 
-.about-mahalo {
-    background-image: url(../recepcionMahaloHorizontal.jpeg);
+h2 {
+    text-align: center;
+}
+/*#endregion fonts and general content*/
+
+/*#region main content */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    /* same as flex-grow: 1; */
+}
+
+#banner-aboutUs {
+    background-image: url("../../../assets/images/recepcionMahaloHorizontal.jpeg");
+    height: 350px;
     background-size: cover;
-    background-position: center;
-    display: inline-block;
-    justify-content: center;
-    align-items: center;
-    color: #ffd2cc;
+    background-position: top;
     box-shadow: inset 0 0 0 2000px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-content: stretch;
+    justify-content: space-evenly;
+    align-items: center;
+    color: var(--bg-color); 
+    font-size: 170%;
+    text-align: center;
 }
 
 .presentation-mahalo {
     padding: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
 
+.about-info{
+    width: 60%; 
+    margin-bottom: 2%;
 }
 
 .section-mahalo {
@@ -58,6 +108,7 @@ h1 {
     padding: 40px;
     color: #4b2d42;
 }
+
 .container-services {
     width: 100%;
     display: flex;
@@ -72,7 +123,6 @@ h1 {
     overflow: hidden;
     margin: 20px;
     border-radius: 15px;
-
 }
 
 .div-cards h2 {
@@ -109,16 +159,6 @@ h1 {
     height: 70px;
     width: 600px;
     border-radius: 10px;
-}
-
-h2 {
-    text-align: center;
-}
-
-p {
-    align-items: center;
-    text-align: center;
-    width: 100%;
 }
 
 .choose-us {
@@ -171,70 +211,15 @@ p {
     text-align: start;
     margin-left: 80px;
     color: rgb(123, 47, 255);
+    align-items: center;
+    text-align: center;
+    width: 100%;
 }
 
 
-/* Header section */
+/*#endregion main content */
 
-/* fonts */
-:root {
-    --bg-color: #ffd2cc;
-    --accent-color: #CCF9FF;
-}
-
-* {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-
-}
-
-.navbar {
-    background-color: var(--bg-color);
-}
-
-#headerList {
-    display: flex;
-    width: 40%;
-    justify-content: space-between;
-}
-
-.header-menu {
-    display: block;
-}
-
-/* Icon */
-#mahaloIcon {
-    width: 120px;
-}
-
-/* End Header section */
-
-
-/* Footer section */
-footer {
-    background-color: var(--bg-color);
-}
-
-
-/* End Footer section */
-
-/* main content */
-
-body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-    /* same as flex-grow: 1; */
-}
-
-/* End main content */
-
-
+/* #region responsive */
 @media only screen and (max-width: 600px) {
     .container-services {
         display: flex;
@@ -260,18 +245,9 @@ main {
         align-items: center;
     }
 
-    .elegirnos_1 {
-        border-left: none;
-    }
 }
 
 @media (min-width: 600px) and (max-width: 767px) {
-    .elegirnos_1 {
-        border-left: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
 
     .buttons {
         display: flex;
@@ -287,15 +263,10 @@ main {
     }
 
 }
+
+
 
 @media (min-width:768px) and (max-width:1024px) {
-    .elegirnos_1 {
-        border-left: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
     .buttons {
         display: flex;
         justify-content: space-around;
@@ -309,3 +280,6 @@ main {
         justify-content: center
     }
 }
+
+
+/*#endregion responsive */
