@@ -238,7 +238,7 @@ main {
         width: 300px;
     }
 
-    .container-elegirnos {
+    .container-choose {
         display: flex;
         flex-direction: column;
         justify-content: center;
