@@ -1,18 +1,23 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
-# define a dic list for users storage
-users = []
 # create today date variable
 today = datetime.today()
 
-def register(email,password,username,surname,birthdate) :
 
-    if searchEmail(email):
+class userList:
+    users = []
+
+def register(self,email,password,username,surname,birthdate) :
+
+#Checks if the email already exist
+    if self.searchEmail(email):
         return False
-    if legalAge(birthdate):
+#Cheks if age is at least 18 (Legal age in Argentina)
+    if self.legalAge(birthdate):
         return True
 
+#In case both if are completed adds a new user
     newUser = {
         'email' : email,
         'password' : password,
@@ -21,16 +26,19 @@ def register(email,password,username,surname,birthdate) :
         'birthdate': birthdate
     }
 
-    users.append(newUser)
+    self.users.append(newUser)
     return True
 
-def searchEmail(email):
-    for user in users:
-        if user ['email'] == email:
+#method to check if email is already in use
+def searchEmail(self, email):
+    for user in self.users:
+        if user['email'] == email:
             return True
         return False
-    
-def legalAge(birthdate):
-    result = relativedelta(today,birthdate)
+
+#method to check if age is at least 18
+def legalAge(self, birthdate):
+    result = relativedelta(today, self.birthdate)
     if result >= 18:
         return True
+
