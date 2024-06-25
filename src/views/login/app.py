@@ -1,5 +1,6 @@
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import hashlib
 
 class userList:
     def __init__(self):
@@ -11,13 +12,16 @@ class userList:
         if self.searchEmail(email):
             return False
     #Cheks if age is at least 18 (Legal age in Argentina)
-        if self.legalAge(birthdate):
-            return True
+        if not self.legalAge(birthdate):
+            return False
+    
+    #Hash the password before storing
+        hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
 
     #In case both if are completed adds a new user
         newUser = {
             'email' : email,
-            'password' : password,
+            'password' : hashed_password, #store hashed password
             'username' : username,
             'surname' : surname,
             'birthdate': birthdate
@@ -43,7 +47,10 @@ class userList:
     #tries to log in a user with provided email and password
     def login (self,email, password):
         for user  in self.users:
-            if user['email'] == email.lower and user['password'] == password:
-                return user
+            if user['email'] == email.lower:
+                #Hash the provided password for comparison
+                hashed_password = hashlib.sha256(password.encode('utf-8')).hexdigest()
+                if user['password'] == hashed_password:
+                    return user
         return None
     
