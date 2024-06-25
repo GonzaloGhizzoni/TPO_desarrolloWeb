@@ -39,3 +39,11 @@ class userList:
         today = datetime.today()
         age = relativedelta(today, birthdate).years
         return age >= 18
+
+    #tries to log in a user with provided email and password
+    def login (self,email, password):
+        for user  in self.users:
+            if user['email'] == email.lower and user['password'] == password:
+                return user
+        return None
+    
