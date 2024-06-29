@@ -35,6 +35,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const loginForm = document.getElementById('registerForm');
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        
+        let email = document.getElementById('FregisterEmail').value;
+        let password = document.getElementById('FregisterPassword').value;
+        let username = document.getElementById('fName').value;
+        let surname = document.getElementById('fSurname').value;
+        let birthdate = document.getElementById('fbirthdate').value;
+        
+        // Call login function
+        register(email, password,username,surname,birthdate);
+    });
+});
+
 
 function login(email, password) {
     fetch(`${apiUrl}/login/${encodeURIComponent(email)}/${encodeURIComponent(password)}`, {
@@ -50,7 +66,20 @@ function login(email, password) {
         console.log(data);
     })
     .catch(error => console.error('Error:', error));
+}
 
-    console.log(email);
-    console.log(password);
+function register(email,password,username,surname,birthdate){
+    fetch(`${apiUrl}/register/${encodeURIComponent(email)}/${encodeURIComponent(password)}/${encodeURIComponent(username)}/${encodeURIComponent(surname)}/${encodeURIComponent(birthdate)}`, {
+        method: "POST"
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => console.error('Error:', error));
 }
