@@ -1,7 +1,8 @@
 import { loadHeader } from "../../../common/header/header.js"
 import { loadFooter } from "../../../common/footer/footer.js"
 
-const apiUrl = "http://127.0.0.1:5000"
+// const apiUrl = "http://127.0.0.1:5000"
+const apiUrl = "nahuelgr.pythonanywhere.com"
 
 // Use case
 var actualView = '../login/login.html'; // Replace with the path of the actual view. ACTUAL VIEW MUST MATCH WITH HEADEAR.HTML HREF PATH
@@ -42,12 +43,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let email = document.getElementById('FregisterEmail').value;
         let password = document.getElementById('FregisterPassword').value;
-        let username = document.getElementById('fName').value;
+        let name = document.getElementById('fName').value;
         let surname = document.getElementById('fSurname').value;
         let birthdate = document.getElementById('fbirthdate').value;
         
         // Call login function
-        register(email, password,username,surname,birthdate);
+        register(email,name,surname,birthdate,password);
     });
 });
 
@@ -58,7 +59,7 @@ function login(email, password) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            return response.json()
         }
         return response.json();
     })
@@ -68,13 +69,13 @@ function login(email, password) {
     .catch(error => console.error('Error:', error));
 }
 
-function register(email,password,username,surname,birthdate){
-    fetch(`${apiUrl}/register/${encodeURIComponent(email)}/${encodeURIComponent(password)}/${encodeURIComponent(username)}/${encodeURIComponent(surname)}/${encodeURIComponent(birthdate)}`, {
+function register(email,name,surname,birthdate,password){
+    fetch(`${apiUrl}/register/${encodeURIComponent(email)}/${encodeURIComponent(password)}/${encodeURIComponent(name)}/${encodeURIComponent(surname)}/${encodeURIComponent(birthdate)}`, {
         method: "POST"
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            return response.json()
         }
         return response.json();
     })
