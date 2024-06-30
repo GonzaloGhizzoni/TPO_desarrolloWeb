@@ -54,9 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 function login(email, password) {
-    console.log(`${apiUrl}/login/${encodeURIComponent(email)}/${encodeURIComponent(password)}`);
-    fetch(`${apiUrl}/login/${encodeURIComponent(email)}/${encodeURIComponent(password)}`, {
-        method: "GET"
+    fetch(`${apiUrl}/login`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, password: password })
     })
     .then(response => {
         console.log(response);
@@ -72,8 +75,12 @@ function login(email, password) {
 }
 
 function register(email,name,surname,birthdate,password){
-    fetch(`${apiUrl}/register/${encodeURIComponent(email)}/${encodeURIComponent(password)}/${encodeURIComponent(name)}/${encodeURIComponent(surname)}/${encodeURIComponent(birthdate)}`, {
-        method: "POST"
+    fetch(`${apiUrl}/register`, {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: email, name: name, surname: surname, birthdate: birthdate, password: password })
     })
     .then(response => {
         if (!response.ok) {
