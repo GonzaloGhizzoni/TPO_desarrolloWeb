@@ -127,7 +127,7 @@ class User():
 
 
 #Local connection
-user = User(host='localhost', user='root', password='1234', database='newDatabase')\
+user = User(host='localhost', user='root', password='1234', database='newDatabase')
 
 #Prod connection 
 # user = User(host='nahuelgr.mysql.pythonanywhere-services.com', user='nahuelgr', password='mahaloDB', database='nahuelgr$mahalo')
