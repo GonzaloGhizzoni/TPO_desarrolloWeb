@@ -40,18 +40,33 @@
                 <h1>Crea una cuenta</h1>
 
                 <input id="fName" type="text" placeholder="Nombre">
+                <span class="error-message"></span>
+
                 <input id="fSurname" type="text" placeholder="Apellido">
+                <span class="error-message"></span>
+
                 <input id="FregisterEmail" type="email" placeholder="Correo electrónico">
+                <span class="error-message"></span>
+
                 <input id="fbirthdate" type="date" placeholder="Fecha de nacimiento">
+                <span class="error-message"></span>
+
                 <input id="FregisterPassword" type="password" placeholder="Contraseña">
+                <span class="error-message"></span>
+
                 <button>Registrarte</button>
             </form>
         </div>
         <div class="form-container sign-in">
             <form id="loginForm">
                 <h1>Iniciar Sesión</h1>
-                <input id="fEmail" type="email" placeholder="Correo electrónico">
-                <input id="fPassword" type="password" placeholder="Contraseña">
+
+                <input id="fEmail" type="email" class="form-control" placeholder="Correo electrónico">
+                <span class="error-message"></span>
+
+                <input id="fPassword" type="password" class="form-control" placeholder="Contraseña">
+                <span class="error-message"></span>
+
                 <a href="#">Olvidaste tu contraseña?</a>
                 <button type="submit">Iniciar Sesión</button>
             </form>

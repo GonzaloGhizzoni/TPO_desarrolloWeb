@@ -2,8 +2,7 @@
     --bg-color: #ffd2cc;
     --accent-color: #ccf9ff;
     --font-color:  #411020;
-  }
-  
+}
 
   *{
     margin: 0;
@@ -58,7 +57,7 @@
     cursor: pointer;
 }
 .container button:hover{
-  background-color: #a3f1fe;
+    background-color: #a3f1fe;
 }
 
 .container button.hidden{
@@ -67,9 +66,8 @@
     
 }
 .container button.hidden:hover{
-  background-color: #feaea3;
-  border-color: #000000;
-  
+    background-color: #feaea3;
+    border-color: #000000;
 }
 
 .container form{
@@ -200,4 +198,8 @@
 
 .container.active .toggle-right{
     transform: translateX(200%);
+}
+
+.is-invalid {
+    border-color: red;
 }
