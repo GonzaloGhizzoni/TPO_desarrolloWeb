@@ -2,7 +2,7 @@ import { loadHeader } from "../../../common/header/header.js"
 import { loadFooter } from "../../../common/footer/footer.js"
 
 // const apiUrl = "http://127.0.0.1:5000"
-const apiUrl = "nahuelgr.pythonanywhere.com"
+const apiUrl = "https://nahuelgr.pythonanywhere.com/"
 
 // Use case
 var actualView = '../login/login.html'; // Replace with the path of the actual view. ACTUAL VIEW MUST MATCH WITH HEADEAR.HTML HREF PATH
