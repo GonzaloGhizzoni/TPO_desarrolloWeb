@@ -10,6 +10,7 @@ var actualView = '../login/login.html'; // Replace with the path of the actual v
 loadHeader(actualView);
 loadFooter();
 
+document.addEventListener('DOMContentLoaded', checkAuthState);
 
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
@@ -92,14 +93,22 @@ function login(email, password) {
     })
     .then(response => {
         console.log(response);
-        if (!response.ok) {
-            alert("Invalid email or password")
+        if (response.ok) {
             return response.json()
         }
-        return response.json();
+        else
+        {
+            alert("Invalid email or password")
+        }
     })
     .then(data => {
-        console.log(data);
+        localStorage.setItem('isLoggedIn', 'true');
+
+        checkAuthState()
+
+        // window.location.href = "https://mahalobelleza.netlify.app/views/home/index.html"
+        window.location.href = "http://localhost:8080/TPO_desarrolloWeb/src/views/home/index.html"
+
     })
     .catch(error => console.error('Error:', error));
 }
@@ -153,5 +162,19 @@ function validateField(form,field) {
             field.nextElementSibling.textContent = '';
             return true;
         }
+    }
+}
+
+function checkAuthState() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+
+    if (isLoggedIn) {
+      // User is logged in, show appointment section and hide login button
+        document.getElementById('turnos-section').style.display = 'block';
+        document.getElementById('login-btn').style.display = 'none';
+    } else {
+      // User is not logged in, hide appointment section and show login button
+        document.getElementById('turnos-section').style.display = 'none';
+        document.getElementById('login-btn').style.display = 'block';
     }
 }
