@@ -15,12 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const form = document.querySelector('form');
     const inputs = document.querySelectorAll('input');
 
-    //Add blur event listener to all required inputs
-    // inputs.forEach(input => {
-    //     input.addEventListener('blur', () => {
-    //         validateField(input);
-    //     });
-    // });
 
     // Add submit event listener to the form
     form.addEventListener("submit", function(event) {
