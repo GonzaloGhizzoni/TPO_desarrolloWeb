@@ -1,3 +1,4 @@
+//-----------------------------------------------------------------------------
 import { loadHeader } from "../../../common/header/header.js"
 import { loadFooter } from "../../../common/footer/footer.js"
 
@@ -5,13 +6,11 @@ import { loadFooter } from "../../../common/footer/footer.js"
 const apiUrl = "https://nahuelgr.pythonanywhere.com"
 
 // Use case
-var actualView = '../login/login.html'; // Replace with the path of the actual view. ACTUAL VIEW MUST MATCH WITH HEADEAR.HTML HREF PATH
+var actualView = '../login/login.html'; // Replace with the path of the actual view. ACTUAL VIEW MUST MATCH WITH HEADER.HTML HREF PATH
 
 loadHeader(actualView);
 loadFooter();
-
-document.addEventListener('DOMContentLoaded', checkAuthState);
-
+//------------------------------------------------------------------------------
 const container = document.getElementById('container');
 const registerBtn = document.getElementById('register');
 const loginBtn = document.getElementById('login');
@@ -26,64 +25,122 @@ loginBtn.addEventListener('click', () => {
     clearFormFields();
 });
 
+//------------------------------------------------------------------------------
+
 document.addEventListener('DOMContentLoaded', function() {
     const loginForm = document.getElementById('loginForm');
-    const inputs = document.querySelectorAll('input');
-
-
-    loginForm.addEventListener('submit', function(event) {
-        let formIsValid = true;
-        
-        inputs.forEach(input => {
-            if (!validateField(loginForm,input)) {
-                formIsValid = false;
-            }
-        });
-
-        if (!formIsValid)
-            event.preventDefault(); 
-
-        let email = document.getElementById('fEmail').value;
-        let password = document.getElementById('fPassword').value;
-        
-        // Call login function
-        login(email, password);
-        clearFormFields();
-    });
-});
-
-document.addEventListener('DOMContentLoaded', function() {
     const registerForm = document.getElementById('registerForm');
     const inputs = document.querySelectorAll('input');
 
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // Evitar el envío por defecto
+        if (validateForm(loginForm)) {
+            let email = document.getElementById('fEmail').value;
+            let password = document.getElementById('fPassword').value;
+            login(email, password);
+        }
+    });
+
     registerForm.addEventListener('submit', function(event) {
-        let formIsValid = true;
-
-        inputs.forEach(input => {
-            if (!validateField(registerForm,input)) {
-                formIsValid = false;
-            }
-        });
-
-
-        if (!formIsValid)
-            event.preventDefault(); 
-        else{
+        event.preventDefault(); // Evitar el envío por defecto
+        if (validateForm(registerForm)) {
             let email = document.getElementById('FregisterEmail').value;
             let password = document.getElementById('FregisterPassword').value;
             let name = document.getElementById('fName').value;
             let surname = document.getElementById('fSurname').value;
             let birthdate = document.getElementById('fbirthdate').value;
-            
-            // Call login function
-            register(email,name,surname,birthdate,password);
-            clearFormFields();
+            register(email, name, surname, birthdate, password);
         }
     });
+
+    function validateForm(form) {
+        let formIsValid = true;
+        const inputs = form.querySelectorAll('input');
+        
+        inputs.forEach(input => {
+            if (!validateField(form, input)) {
+                formIsValid = false;
+            }
+        });
+
+        return formIsValid;
+    }
+    
+    function validateField(form, field) {
+        const fieldType = field.getAttribute('type');
+        const fieldValue = field.value.trim();
+        let valid = true;
+
+        if (fieldValue.length === 0) {
+            field.classList.add('is-invalid');
+            field.nextElementSibling.textContent = 'Debe completar este campo.';
+            valid = false;
+        } else {
+            switch (fieldType) {
+                case 'email':
+                    if (!validateEmail(fieldValue)) {
+                        field.classList.add('is-invalid');
+                        field.nextElementSibling.textContent = 'Correo electrónico no válido.';
+                        valid = false;
+                    }
+                    break;
+                case 'password':
+                    if (fieldValue.length < 6) {
+                        field.classList.add('is-invalid');
+                        field.nextElementSibling.textContent = 'La contraseña debe tener al menos 6 caracteres';
+                        valid = false;
+                    }
+                    break;
+            }
+        }
+
+        if (valid) {
+            field.classList.remove('is-invalid');
+            field.nextElementSibling.textContent = '';
+        }
+
+        return valid;
+    }
+
+    function validateEmail(email) {
+        const re =  /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+        return re.test(String(email).toLowerCase());
+    }
+
 });
 
+function clearFormFields() {
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
 
+    // Clear login form fields and errors
+    loginForm.querySelectorAll('input').forEach(input => {
+        input.value = '';
+        input.classList.remove('is-invalid');
+        if (input.nextElementSibling) {
+            input.nextElementSibling.textContent = '';
+        }
+    });
+
+    // Clear register form fields and errors
+    registerForm.querySelectorAll('input').forEach(input => {
+        input.value = '';
+        input.classList.remove('is-invalid');
+        if (input.nextElementSibling) {
+            input.nextElementSibling.textContent = '';
+        }
+    });
+    // Clear messages
+    document.getElementById('loginSuccessMessage').textContent = "";
+    document.getElementById('loginFailed').textContent = "";
+    document.getElementById('registerSuccessMessage').textContent = "";
+}
+//--------------------------------------------------------------------------
 function login(email, password) {
+    // Clear previous messages
+    document.getElementById('loginSuccessMessage').textContent = "";
+    document.getElementById('loginFailed').textContent = "";
+    
     fetch(`${apiUrl}/login`, {
         method: "POST",
         headers: {
@@ -92,25 +149,25 @@ function login(email, password) {
         body: JSON.stringify({ email: email, password: password })
     })
     .then(response => {
-        console.log(response);
-        if (response.ok) {
-            return response.json()
+        if (!response.ok) {
+            return response.json().then(data => {
+                document.getElementById('loginFailed').textContent = "Correo electrónico o contraseña incorrectos";
+                throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
+            });
         }
-        else
-        {
-            alert("Invalid email or password")
-        }
+        return response.json();
     })
     .then(data => {
-        localStorage.setItem('isLoggedIn', 'true');
-
-        checkAuthState()
-
-        // window.location.href = "https://mahalobelleza.netlify.app/views/home/index.html"
-        window.location.href = "http://localhost:8080/TPO_desarrolloWeb/src/views/home/index.html"
-
+        document.getElementById('loginSuccessMessage').textContent = "Inicio de sesión exitoso!";
+        localStorage.setItem('token', data.token); // save token in localStorage
+        clearFormFields();
+        window.location.href = '../home/index.html'; // redirect to home page
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        document.getElementById('loginSuccessMessage').textContent = "";
+        document.getElementById('loginFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+        console.error('Error:', error);
+    });
 }
 
 function register(email,name,surname,birthdate,password){
@@ -123,58 +180,22 @@ function register(email,name,surname,birthdate,password){
     })
     .then(response => {
         if (!response.ok) {
-            return response.json()
+            return response.json().then(data => {
+                document.getElementById('registerFailed').textContent = "Registro fallido";
+                throw new Error(data.message || "Registro fallido");
+            });
         }
         return response.json();
     })
     .then(data => {
-        console.log(data);
+        document.getElementById('registerSuccessMessage').textContent = "Registro exitoso!";
+        clearFormFields();
     })
-    .catch(error => console.error('Error:', error));
-}
-
-function clearFormFields() {
-    const loginForm = document.getElementById('loginForm');
-    const registerForm = document.getElementById('registerForm');
-
-    // Clear login form fields
-    loginForm.querySelectorAll('input[type="email"], input[type="password"]').forEach(input => {
-        input.value = '';
-    });
-
-    // Clear register form fields
-    registerForm.querySelectorAll('input[type="text"], input[type="password"], input[type="email"], input[type="date"]').forEach(input => {
-        input.value = '';
+    .catch(error => {
+        document.getElementById('registerSuccessMessage').textContent = "";
+        document.getElementById('registerFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+        console.error('Error:', error);
     });
 }
+//------------------------------------------------------------------
 
-function validateField(form,field) {
-    const fieldType = field.getAttribute('type');
-    const fieldValue = field.value.trim();
-
-    if (fieldType === 'text' || fieldType === 'email' || fieldType === 'date' || fieldType === 'password') {
-        if (fieldValue.length === 0) {
-            field.classList.add('is-invalid');
-            field.nextElementSibling.textContent = 'Debe completar este campo.';
-            return false;
-        } else {
-            field.classList.remove('is-invalid');
-            field.nextElementSibling.textContent = '';
-            return true;
-        }
-    }
-}
-
-function checkAuthState() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
-
-    if (isLoggedIn) {
-      // User is logged in, show appointment section and hide login button
-        document.getElementById('turnos-section').style.display = 'block';
-        document.getElementById('login-btn').style.display = 'none';
-    } else {
-      // User is not logged in, hide appointment section and show login button
-        document.getElementById('turnos-section').style.display = 'none';
-        document.getElementById('login-btn').style.display = 'block';
-    }
-}

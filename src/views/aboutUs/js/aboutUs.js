@@ -6,3 +6,8 @@ var actualView = '../aboutUs/aboutUs.html'; // Replace with the path of the actu
 
 loadHeader(actualView);
 loadFooter();
+
+//-----------------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    checkSession();
+});
