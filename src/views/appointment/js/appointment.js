@@ -85,18 +85,27 @@ function addAppointment(name, email, specialties, dateOfAppointment, hour) {
         }),
     })
         .then((response) => {
-            console.log(response);
+            //console.log(response);
             if (!response.ok) {
-                console.log("Entro aca");
-                return response.json();
+                //console.log("Entro aca");
+                return response.json().then(data => {
+                    document.getElementById('addAppointmentFailed').textContent = "No se pudo agregar su turno."
+                    throw new Error(data.message || "No se pudo agregar su turno.")
+                })
             }
             return response.json();
         })
         .then((data) => {
-            console.log("Entro al data");
-            console.log(data);
+            //console.log("Entro al data");
+            //console.log(data);
+            document.getElementById('addAppointmentSuccess').textContent = "Turno agregado con éxito!"
+            clearFormFields();
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((error) => {
+            document.getElementById('addAppointmentSuccess').textContent = "";
+            document.getElementById('addAppointmentFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+            console.error('Error:', error);
+        });
 }
 
 // Function to get appointments by user
