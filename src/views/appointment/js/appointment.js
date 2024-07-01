@@ -153,16 +153,25 @@ function editAppointment(appointmentID){
         .then((response) => {
             console.log(response);
             if (!response.ok) {
-                console.log("Entro aca");
-                return response.json();
+                //console.log("Entro aca");
+                return response.json().then(data => {
+                    document.getElementById('editAppointmentFailed').textContent = "No se pudo modificar su turno."
+                    throw new Error(data.message || "No se pudo modificar su turno.")
+                })
             }
             return response.json();
         })
         .then((data) => {
-            console.log("Entro al data");
-            console.log(data);
+            //console.log("Entro al data");
+            //console.log(data);
+            document.getElementById('editAppointmentSuccess').textContent = "Turno modificado con éxito!"
+            clearFormFields();
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((error) => {
+            document.getElementById('editAppointmentSuccess').textContent = "";
+            document.getElementById('editAppointmentFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+            console.error('Error:', error);
+        });
 }
 
 // Function to delete appointment
@@ -179,17 +188,25 @@ function deleteAppointment(appointmentID){
         .then((response) => {
             console.log(response);
             if (!response.ok) {
-                console.log("Entro aca");
-                return response.json();
+                //console.log("Entro aca");
+                //return response.json();
+                document.getElementById('deleteAppointmentFailed').textContent = "No se pudo eliminar su turno."
+                throw new Error(data.message || "No se pudo eliminar su turno.")
             }
             return response.json();
         })
         .then((data) => {
             //Logica del modal para avisar que se borro el appointment aca adentro
+            document.getElementById('deleteAppointmentSuccess').textContent = "Turno eliminado con éxito!"
+            //clearFormFields();
             //Call the function getUserAppointments again to refresh appointments table
             getUserAppointments(userID)
         })
-        .catch((error) => console.error("Error:", error));
+        .catch((error) => {
+            document.getElementById('deleteAppointmentSuccess').textContent = "";
+            document.getElementById('deleteAppointmentFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+            console.error('Error:', error);
+        });
 }
 
 // Function to dinamically create appointments table
