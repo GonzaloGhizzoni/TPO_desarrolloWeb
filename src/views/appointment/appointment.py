@@ -111,7 +111,7 @@ class Appointment():
         # hago una consulta que coincida el user id por param con el user id de la tabla
         # trago todo lo que coincida
         try:
-            self.cursor.execute("SELECT * FROM appointments WHERE user_id = %s",1)
+            self.cursor.execute("SELECT * FROM appointments WHERE user_id = %s",(userID,))
             return self.cursor.fetchall();
         
         except mysql.connector.Error as error:
@@ -180,16 +180,16 @@ def getUserAppointment():
     if not appointments: 
         return jsonify([]), 204
     else:
-        return jsonify({appointments}), 200;
+        return jsonify(appointments), 200;
 
-@app.route('/cancelAppointment', methods=["DELETE"])
+@app.route('/cancelappointment', methods=["DELETE"])
 def cancelAppointment():
     if appointment.cancelAppointment():
         return jsonify({"Success": "appointment canceled ok " }), 200
     else:
         return jsonify({"Error": "Error in method cancel appointment"}), 500    
 
-@app.route('/modifyAppointment', methods=["PUT"])
+@app.route('/modifyappointment', methods=["PUT"])
 def modifyAppointment():
     data = request.json
     appointmentID = data.get('appoinmentID')
