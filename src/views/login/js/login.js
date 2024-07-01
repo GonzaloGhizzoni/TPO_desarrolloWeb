@@ -149,11 +149,10 @@ function login(email, password) {
         body: JSON.stringify({ email: email, password: password })
     })
     .then(response => {
-        // console.log(response);
         if (!response.ok) {
             return response.json().then(data => {
                 document.getElementById('loginFailed').textContent = "Correo electrónico o contraseña incorrectos";
-                //throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
+                throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
             });
         }
         return response.json();
@@ -164,7 +163,7 @@ function login(email, password) {
     })
     .catch(error => {
         document.getElementById('loginSuccessMessage').textContent = "";
-        alert(error.message);
+        document.getElementById('loginFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
         console.error('Error:', error);
     });
 }
