@@ -179,7 +179,8 @@ function register(email,name,surname,birthdate,password){
     .then(response => {
         if (!response.ok) {
             return response.json().then(data => {
-                throw new Error(data.message || "Registration Failed");
+                document.getElementById('registerFailed').textContent = "Registro fallido";
+                throw new Error(data.message || "Registro fallido");
             });
         }
         return response.json();
@@ -190,7 +191,7 @@ function register(email,name,surname,birthdate,password){
     })
     .catch(error => {
         document.getElementById('registerSuccessMessage').textContent = "";
-        alert(error.message);
+        document.getElementById('registerFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
         console.error('Error:', error);
     });
 }
