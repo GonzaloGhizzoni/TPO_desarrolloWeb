@@ -28,6 +28,33 @@
 <script type="module" src="../appointment/js/appointment.js"></script>
 
 <body>
+    <!-- Ejemplo de un modal básico para editar -->
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeEditModal()">&times;</span>
+        <h2>Editar Cita</h2>
+        <form id="editForm">
+            <!-- Campos de edición -->
+            <label for="specialty">Especialidad:</label>
+            <select id="specialties" name="specialty" required>
+                <option value="Uñas">Uñas</option>
+                <option value="pestañas">Pestañas</option>
+                <option value="cejas">Cejas</option>
+                <option value="peinado">peinado</option>
+            </select>
+            
+            <label for="dateOfAppointment">Fecha de la cita:</label>
+            <input type="date" id="dateOfAppointment" name="dateOfAppointment" required><br><br>
+
+            <label for="hour">Hora:</label>
+            <input type="time" id="hour" name="hour" required><br><br>
+
+            <button id="submitEditAppointment" type="button" onclick="submitEditedAppointment()">Guardar Cambios</button>
+        </form>
+    </div>
+</div>
+
+
 
     <header class="sticky-top"></header>
 
@@ -93,3 +120,5 @@
 </body>
 
 </html>
+
+

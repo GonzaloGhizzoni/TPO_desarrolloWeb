@@ -45,6 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const bookingForm = document.getElementById("booking-form");
     const inputs = document.querySelectorAll("input");
 
+    // Event listener for add a new appointment
     bookingForm.addEventListener("submit", function (event) {
         let formIsValid = true;
 
@@ -64,6 +65,19 @@ document.addEventListener("DOMContentLoaded", function () {
         addAppointment(email, name, specialties, dateOfAppointment, hour);
         // }
     });
+
+    // // Event listener for save changes button in the modal
+    // const saveChangesButton = document.getElementById("submitEditAppointment");
+    // saveChangesButton.addEventListener("click", () => {
+    //     // Call the function to submit edited appointment
+    //     submitEditedAppointment();
+    // });
+    // Selecciona el botón de guardar cambios
+    const saveChangesButton = document.getElementById("save-changes-button");
+    
+    // Añade un event listener para el clic en el botón
+    saveChangesButton.addEventListener("click", submitEditedAppointment);
+    
 });
 
 function addAppointment(name, email, specialties, dateOfAppointment, hour) {
@@ -129,15 +143,16 @@ function getUserAppointments(userID) {
             console.log("Entro al data");
             console.log(data);
             displayUserAppointments(data);
+            document.getElementById("editModal").style.display = "none";
         })
         .catch((error) => console.error("Error:", error));
 }
 
 // Function to edit appointment
-function editAppointment(appointmentID){
-    let newSpecialties = document.getElementById("table-specialties").value
-    let newdateOfAppointment = document.getElementById("table-date").value
-    let newHour = document.getElementById("table-hour").value
+function editAppointment(appointmentID,updatedData){
+    // let newSpecialties = document.getElementById("table-specialties").value
+    // let newdateOfAppointment = document.getElementById("table-date").value
+    // let newHour = document.getElementById("table-hour").value
     fetch(`${apiUrl}/newappointment`, {
         method: "PUT",
         headers: {
@@ -145,9 +160,9 @@ function editAppointment(appointmentID){
         },
         body: JSON.stringify({
             id: appointmentID,
-            specialties: newSpecialties,
-            dateOfAppointment: newdateOfAppointment,
-            hour: newHour,
+            specialties: updatedData.specialties,
+            dateOfAppointment: updatedData.dateOfAppointment,
+            hour: updatedData.hour,
         }),
     })
         .then((response) => {
@@ -253,7 +268,8 @@ function displayUserAppointments(appointments) {
             </svg>`
         editButton.addEventListener("click", () => {
             // Call function to modify appointment
-            editAppointment(appointment.id);
+            // editAppointment(appointment.id);
+            openEditModal(appointment);
         });
         editCell.appendChild(editButton);
 
@@ -302,4 +318,40 @@ function formatDate(dateString) {
 
     // Return the formatted date
     return `${day}/${month}/${year}`;
+}
+
+// Función para abrir el modal de edición
+function openEditModal(appointment) {
+    const modal = document.getElementById("editModal");
+    modal.style.display = "block";
+
+    // Llenar los campos del formulario con los datos de 'appointment'
+    document.getElementById("specialties").value = appointment.specialties;
+    document.getElementById("dateOfAppointment").value = appointment.date_of_appointment.split("T")[0]; // Formato yyyy-mm-dd
+    document.getElementById("hour").value = appointment.hour;
+
+    // Puedes almacenar el ID de la cita en un atributo data para usarlo en la función de guardar cambios
+    modal.setAttribute("data-appointment-id", appointment.id);
+}
+
+// Función para cerrar el modal de edición
+function closeEditModal() {
+    const modal = document.getElementById("editModal");
+    modal.style.display = "none";
+}
+
+// Función para enviar los datos editados al backend
+function submitEditedAppointment() {
+    const modal = document.getElementById("editModal");
+    const appointmentID = modal.getAttribute("data-appointment-id");
+
+    const updatedData = {
+        specialties: document.getElementById("specialties").value,
+        dateOfAppointment: document.getElementById("dateOfAppointment").value,
+        hour: document.getElementById("hour").value,
+    };
+
+    // saveEditedAppointment(appointmentID, updatedData);
+    editAppointment(appointmentID, updatedData);
+    closeEditModal();
 }
