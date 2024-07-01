@@ -144,7 +144,9 @@ function login(email, password) {
         // console.log(response);
         if (!response.ok) {
             return response.json().then(data => {
-                throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
+                //throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
+                document.getElementById('loginFailed').textContent = "Correo electrónico o contraseña incorrectos";
+                clearFormFields();
             });
         }
         return response.json();
