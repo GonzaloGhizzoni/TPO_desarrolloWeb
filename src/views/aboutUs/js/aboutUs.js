@@ -8,3 +8,7 @@ loadHeader(actualView);
 loadFooter();
 
 //-----------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    checkSession();
+});

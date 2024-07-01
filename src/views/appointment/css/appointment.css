@@ -82,7 +82,7 @@ button {
   font-size: 16px;
 }
 
-button {
+#save-appoint-btn {
   display: flex;
   justify-content: center;
   background-color: var(--accent-color);
@@ -92,15 +92,8 @@ button {
   margin-top: 20px;
 }
 
-button:hover {
+#save-appoint-btn:hover {
   background-color: #a3f1fe;
-}
-#cancel-btn{
-  background-color: #ff2626;
-  color: white;
-}
-#cancel-btn:hover{
-  background-color: #af0505;
 }
 
 .btn-form {
@@ -111,6 +104,7 @@ button:hover {
 #sidebar {
   width: 250px;
   background-color: var(--bg-color);
+  color: var(--font-color);
   padding: 15px;
   margin: 40px;
   border-radius: 10px;
@@ -131,6 +125,45 @@ button:hover {
 .active-sidebar {
   background-color: #64e5fc;
   border-radius: 10px;
+}
+
+/* Table section */
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  vertical-align: center;
+}
+
+table button{
+  width: 40px;
+  background-color: var(--accent-color);
+}
+table button:hover{
+  background-color: #a3f1fe;
+}
+
+th, td {
+  padding: 10px;
+  /* text-align: left; */
+  border-bottom: 3px solid var(--accent-color);
+  color: var(--font-color);
+
+}
+
+th {
+  /* background-color: #f2f2f2; */
+  border: 3px solid var(--accent-color);
+  font-weight: bold;
+}
+
+.cancel-btn{
+  background-color: #ff2626;
+
+}
+.cancel-btn:hover{
+  background-color: #af0505;
 }
 
 /* End of body section */

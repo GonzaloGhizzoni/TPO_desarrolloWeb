@@ -111,7 +111,7 @@ class Appointment():
         # hago una consulta que coincida el user id por param con el user id de la tabla
         # trago todo lo que coincida
         try:
-            self.cursor.execute("SELECT * FROM appointments WHERE user_id = %s",1)
+            self.cursor.execute("SELECT * FROM appointments WHERE user_id = %s",(userID,))
             return self.cursor.fetchall();
         
         except mysql.connector.Error as error:
@@ -120,7 +120,7 @@ class Appointment():
     def cancelAppointment(self,appointmentID):
         # recibo el id del appointment para cancelar
         try:
-            self.cursor.execute("DELETE FROM appointments WHERE id = %s",appointmentID)
+            self.cursor.execute("DELETE FROM appointments WHERE id = %s",(appointmentID,))
             self.conn.commit()
             return self.cursor.rowcount > 0
         
@@ -153,19 +153,13 @@ def getAllAppointments():
 @app.route('/newappointment', methods=["POST"])
 def addNewAppointment():
     data = request.json
-    # email = data.get('email')
-    # name = data.get('name')
+    email = data.get('email')
+    name = data.get('name')
     hour = data.get('hour')
     dateOfAppointment = data.get('dateOfAppointment')
     specialties = data.get('specialties')
     
-    # print(email)
-    # print(name)
-    print(hour)
-    print(dateOfAppointment)
-    print(specialties)
-    
-    if appointment.newAppointment("nahuelgonzalez07@hotmail.es","nahuel gonzalez",hour,dateOfAppointment,specialties):
+    if appointment.newAppointment(email,name,hour,dateOfAppointment,specialties):
         return jsonify({'Success': 'Appointment added'}), 200
     else:
         print("entro aca y dio error")
@@ -180,16 +174,18 @@ def getUserAppointment():
     if not appointments: 
         return jsonify([]), 204
     else:
-        return jsonify({appointments}), 200;
+        return jsonify(appointments), 200;
 
-@app.route('/cancelAppointment', methods=["DELETE"])
+@app.route('/cancelappointment', methods=["DELETE"])
 def cancelAppointment():
-    if appointment.cancelAppointment():
+    data = request.json
+    appointmentID = data.get('id');
+    if appointment.cancelAppointment(appointmentID):
         return jsonify({"Success": "appointment canceled ok " }), 200
     else:
         return jsonify({"Error": "Error in method cancel appointment"}), 500    
 
-@app.route('/modifyAppointment', methods=["PUT"])
+@app.route('/modifyappointment', methods=["PUT"])
 def modifyAppointment():
     data = request.json
     appointmentID = data.get('appoinmentID')
