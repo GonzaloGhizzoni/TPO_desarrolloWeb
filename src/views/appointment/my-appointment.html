@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,10 +17,12 @@
     <!-- Family font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <!-- Boostrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
 </head>
 <script type="module" src="../appointment/js/appointment.js"></script>
@@ -38,40 +41,25 @@
         <div class="appoin-container">
             <div id="sidebar">
                 <nav>
-                <a href="../appointment/appointment-form.html">Solicita un Turno</a>
-                <a href="../appointment/my-appointment.html" class="active-sidebar">Mis Turnos</a>
+                    <a href="../appointment/appointment-form.html">Solicita un Turno</a>
+                    <a href="../appointment/my-appointment.html" class="active-sidebar">Mis Turnos</a>
                 </nav>
             </div>
             <div class="form-container">
-                <h4>Acá se encuentran los datos de sus turnos:</h4>
-                <form id="booking-form">
-                    <label for="name">Nombre:</label>
-                    <input id="fName" type="text" name="name" required>
-        
-                    <label for="email">Email:</label>
-                    <input id="fEmail" type="email" name="email" required>
-        
-                    <label for="specialty">Especialidad:</label>
-                    <select id="fSpecialty" name="specialty" required>
-                        <option value="Uñas">Uñas</option>
-                        <option value="pestañas">Pestañas</option>
-                        <option value="cejas">Cejas</option>
-                        <option value="peinado">peinado</option>
-                    </select>
-        
-                    <label for="date">Fecha:</label>
-                    <input id="fDate" type="date" name="date" required>
-        
-                    <label for="time">Hora:</label>
-                    <select id="fTime" name="time" required>
-                        <!-- Las opciones de horario se agregarán con JavaScript -->
-                    </select>
-
-                    <div class="btn-form">
-                    <button id="cancel-btn">Cancelar Turno</button>
-                    <button>Modificar Turno</button>
-                    </div>
-                </form>
+                <h4>Mis turnos</h4>
+                <table id="appointments-table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Nombre</th>
+                            <th id="table-specialties">Especialidad</th>
+                            <th id="table-date">Fecha</th>
+                            <th id="table-hour">Hora</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
 
 
@@ -84,9 +72,15 @@
     </footer>
 
     <!-- jQuery, Popper.js, and Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
 
 </body>
 
