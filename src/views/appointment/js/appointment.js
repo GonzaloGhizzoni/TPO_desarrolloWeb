@@ -176,8 +176,9 @@ function deleteAppointment(appointmentID){
             return response.json();
         })
         .then((data) => {
-            console.log("Entro al data");
-            console.log(data);
+            //Logica del modal para avisar que se borro el appointment aca adentro
+            //Call the function getUserAppointments again to refresh appointments table
+            getUserAppointments(userID)
         })
         .catch((error) => console.error("Error:", error));
 }
