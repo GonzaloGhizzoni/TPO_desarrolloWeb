@@ -130,9 +130,17 @@ function clearFormFields() {
             input.nextElementSibling.textContent = '';
         }
     });
+    // Clear messages
+    document.getElementById('loginSuccessMessage').textContent = "";
+    document.getElementById('loginFailed').textContent = "";
+    document.getElementById('registerSuccessMessage').textContent = "";
 }
 //--------------------------------------------------------------------------
 function login(email, password) {
+    // Clear previous messages
+    document.getElementById('loginSuccessMessage').textContent = "";
+    document.getElementById('loginFailed').textContent = "";
+    
     fetch(`${apiUrl}/login`, {
         method: "POST",
         headers: {
@@ -144,9 +152,8 @@ function login(email, password) {
         // console.log(response);
         if (!response.ok) {
             return response.json().then(data => {
-                //throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
                 document.getElementById('loginFailed').textContent = "Correo electrónico o contraseña incorrectos";
-                clearFormFields();
+                throw new Error(data.message || "Correo electrónico o contraseña incorrectos");
             });
         }
         return response.json();
