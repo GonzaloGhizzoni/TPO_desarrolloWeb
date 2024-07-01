@@ -153,19 +153,13 @@ def getAllAppointments():
 @app.route('/newappointment', methods=["POST"])
 def addNewAppointment():
     data = request.json
-    # email = data.get('email')
-    # name = data.get('name')
+    email = data.get('email')
+    name = data.get('name')
     hour = data.get('hour')
     dateOfAppointment = data.get('dateOfAppointment')
     specialties = data.get('specialties')
     
-    # print(email)
-    # print(name)
-    print(hour)
-    print(dateOfAppointment)
-    print(specialties)
-    
-    if appointment.newAppointment("nahuelgonzalez07@hotmail.es","nahuel gonzalez",hour,dateOfAppointment,specialties):
+    if appointment.newAppointment(email,name,hour,dateOfAppointment,specialties):
         return jsonify({'Success': 'Appointment added'}), 200
     else:
         print("entro aca y dio error")
