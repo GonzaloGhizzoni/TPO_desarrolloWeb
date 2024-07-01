@@ -24,6 +24,9 @@
     <!-- Boostrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
         integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <!-- JS -->
+    <script src="../../common/checkSession/session.js"></script>
 </head>
 
 <script type="module" src="../login/js/login.js"></script>
@@ -38,6 +41,8 @@
         <div class="form-container sign-up">
             <form id="registerForm">
                 <h1>Crea una cuenta</h1>
+                <div id="registerSuccessMessage" class="success-message"></div>
+                <div id="registerFailed" class="error-message"></div>
 
                 <input id="fName" type="text" placeholder="Nombre">
                 <span class="error-message"></span>
@@ -60,6 +65,9 @@
         <div class="form-container sign-in">
             <form id="loginForm">
                 <h1>Iniciar Sesión</h1>
+
+                <div id="loginSuccessMessage" class="success-message"></div>
+                <div id="loginFailed" class="error-message"></div>
 
                 <input id="fEmail" type="email" class="form-control" placeholder="Correo electrónico">
                 <span class="error-message"></span>

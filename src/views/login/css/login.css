@@ -23,6 +23,7 @@
     max-width: 100%;
     min-height: 480px;
     margin: 100px;
+    height: 600px;
 }
 
 .container p{
@@ -202,4 +203,14 @@
 
 .is-invalid {
     border-color: red;
+}
+
+.success-message {
+    color: green;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.error-message {
+    color: red;
 }
