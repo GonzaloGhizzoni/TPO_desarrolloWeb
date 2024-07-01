@@ -120,7 +120,7 @@ class Appointment():
     def cancelAppointment(self,appointmentID):
         # recibo el id del appointment para cancelar
         try:
-            self.cursor.execute("DELETE FROM appointments WHERE id = %s",appointmentID)
+            self.cursor.execute("DELETE FROM appointments WHERE id = %s",(appointmentID,))
             self.conn.commit()
             return self.cursor.rowcount > 0
         
@@ -184,7 +184,9 @@ def getUserAppointment():
 
 @app.route('/cancelappointment', methods=["DELETE"])
 def cancelAppointment():
-    if appointment.cancelAppointment():
+    data = request.json
+    appointmentID = data.get('id');
+    if appointment.cancelAppointment(appointmentID):
         return jsonify({"Success": "appointment canceled ok " }), 200
     else:
         return jsonify({"Error": "Error in method cancel appointment"}), 500    
