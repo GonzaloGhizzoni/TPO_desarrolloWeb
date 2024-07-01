@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', function() {
     const bookingForm = document.getElementById('booking-form');
-    const inputs = document.querySelectorAll('input');
+//    const inputs = document.querySelectorAll('input');
 
     bookingForm.addEventListener('submit', function(event) {
-        let formIsValid = true;
-
+        //let formIsValid = true;
+        event.preventDefault();
         // inputs.forEach(input => {
         //     if (!validateField(bookingForm,input)) {
         //         formIsValid = false;
@@ -64,11 +64,11 @@ document.addEventListener('DOMContentLoaded', function() {
             let dateOfAppointment = document.getElementById('fDate').value;
             let hour = document.getElementById('fTime').value;
             
-            console.log(email);
-            console.log(name);
-            console.log(specialties);
-            console.log(dateOfAppointment);
-            console.log(hour);
+            // console.log(email);
+            // console.log(name);
+            // console.log(specialties);
+            // console.log(dateOfAppointment);
+            // console.log(hour);
 
 
             // Call login function
@@ -94,16 +94,22 @@ function addAppointment(name, email, specialties, dateOfAppointment, hour) {
     .then(response => {
         console.log(response);
         if (!response.ok) {
-            console.log("Entro aca")
-            return response.json()
-        }
+            return response.json().then(data => {
+                document.getElementById('addAppointmentFailed').textContent = "Error al agendar turno";
+                throw new Error(data.message || "Error al agendar turno");
+        });
+    }
         return response.json()
     })
     .then(data => {
-        console.log("Entro al data")
-        console.log(data);
+        document.getElementById('addAppointmentSuccess').textContent = "Turno agendado con éxito!";
+        clearFormFields();
     })
-    .catch(error => console.error('Error:', error));
+    .catch(error => {
+        document.getElementById('addAppointmentSuccess').textContent = "";
+        document.getElementById('addAppointmentFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+        console.error('Error:', error);
+    });
 }
 
 function getUserAppointments(userID){
@@ -129,3 +135,27 @@ function getUserAppointments(userID){
     .catch(error => console.error('Error:', error));
 
 }
+
+//-------------------------------------------------------
+function clearFormFields() {
+    const bookingForm = document.getElementById('booking-form');
+    bookingForm.querySelectorAll('input').forEach(input => {
+        input.value = '';
+        input.classList.remove('is-invalid');
+        if (input.nextElementSibling) {
+            input.nextElementSibling.textContent = '';
+        }
+    });
+
+    // Clear messages
+    document.getElementById('addAppointmentSuccess').textContent = "";
+    document.getElementById('addAppointmentFailed').textContent = "";
+}
+
+//-------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    checkSession();
+});
+
+//-------------------------------------------------------
