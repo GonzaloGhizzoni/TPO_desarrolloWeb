@@ -199,6 +199,3 @@ function register(email,name,surname,birthdate,password){
 }
 //------------------------------------------------------------------
 
-document.addEventListener('DOMContentLoaded', function() {
-    checkSession();
-});
