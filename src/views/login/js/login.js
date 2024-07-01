@@ -159,7 +159,9 @@ function login(email, password) {
     })
     .then(data => {
         document.getElementById('loginSuccessMessage').textContent = "Inicio de sesión exitoso!";
+        localStorage.setItem('token', data.token); // save token in localStorage
         clearFormFields();
+        window.location.href = '../home/index.html'; // redirect to home page
     })
     .catch(error => {
         document.getElementById('loginSuccessMessage').textContent = "";
@@ -196,3 +198,7 @@ function register(email,name,surname,birthdate,password){
     });
 }
 //------------------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    checkSession();
+});
