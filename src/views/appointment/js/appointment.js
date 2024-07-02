@@ -98,28 +98,25 @@ function addAppointment(name, email, specialties, dateOfAppointment, hour) {
             hour: hour,
         }),
     })
-        .then((response) => {
-            //console.log(response);
-            if (!response.ok) {
-                //console.log("Entro aca");
-                return response.json().then(data => {
-                    document.getElementById('addAppointmentFailed').textContent = "No se pudo agregar su turno."
-                    throw new Error(data.message || "No se pudo agregar su turno.")
-                })
-            }
-            return response.json();
-        })
-        .then((data) => {
-            //console.log("Entro al data");
-            //console.log(data);
-            document.getElementById('addAppointmentSuccess').textContent = "Turno agregado con éxito!"
-            clearFormFields();
-        })
-        .catch((error) => {
-            document.getElementById('addAppointmentSuccess').textContent = "";
-            document.getElementById('addAppointmentFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
-            console.error('Error:', error);
+    .then(response => {
+        console.log(response);
+        if (!response.ok) {
+            return response.json().then(data => {
+                document.getElementById('addAppointmentFailed').textContent = "Error al agendar turno";
+                throw new Error(data.message || "Error al agendar turno");
         });
+    }
+        return response.json()
+    })
+    .then(data => {
+        document.getElementById('addAppointmentSuccess').textContent = "Turno agendado con éxito!";
+        clearFormFields();
+    })
+    .catch(error => {
+        document.getElementById('addAppointmentSuccess').textContent = "";
+        document.getElementById('addAppointmentFailed').textContent = error.message; // Aquí se actualiza el contenido del elemento en la página
+        console.error('Error:', error);
+    });
 }
 
 // Function to get appointments by user
@@ -224,7 +221,32 @@ function deleteAppointment(appointmentID){
         });
 }
 
-// Function to dinamically create appointments table
+
+//-------------------------------------------------------
+function clearFormFields() {
+    const bookingForm = document.getElementById('booking-form');
+    bookingForm.querySelectorAll('input').forEach(input => {
+        input.value = '';
+        input.classList.remove('is-invalid');
+        if (input.nextElementSibling) {
+            input.nextElementSibling.textContent = '';
+        }
+    });
+
+    // Clear messages
+    document.getElementById('addAppointmentSuccess').textContent = "";
+    document.getElementById('addAppointmentFailed').textContent = "";
+}
+
+//-------------------------------------------------------
+
+document.addEventListener('DOMContentLoaded', function() {
+    checkSession();
+});
+
+//-------------------------------------------------------
+
+    // Function to dinamically create appointments table
 function displayUserAppointments(appointments) {
     //Select the tahble html element.
     const tableBody = document.getElementById("appointments-table").querySelector("tbody");
@@ -237,7 +259,6 @@ function displayUserAppointments(appointments) {
         const emailCell = document.createElement("td");
         emailCell.textContent = appointment.email;
         console.log(appointment.email)
-
         const hourCell = document.createElement("td");
         hourCell.textContent = appointment.hour;
         console.log(appointment.hour)
